@@ -24,21 +24,11 @@ class Location {
         string state; //N
         string original_zip; //O; DO NOT NEED THIS 
         string zipcode; //P; zip code with proper length; use this
-        float latitude; //Q
-        float longitude; //R
 
 
-    Location(string a, string b, int c, string d, string e, int f, string g, int h, string i, int j, 
-        string k, string l, string m, string n, string o, string p, float q, float r){
-            //Constructor 
-            date = a;
-            owned = b;
-            parking_spaces = c;
-            active = d;
-            building_type = e;
-            congressional_district = f;
-            
-        }
+
+
+
 
     //Getters
     string get_date(); //A
@@ -65,7 +55,6 @@ class Location {
 
     string get_county(); //L
 
-    string get_address(); //M
 
     string get_state(); //N
 
@@ -76,5 +65,25 @@ class Location {
     float get_latitude(); //Q
 
     float get_longitude(); //R
+
+
+
+public:
+    double distance; // need to be accessed in minHeap
+    float latitude; //Q
+    float longitude; //R
+
+    Location(string a, string b, int c, string d, string e, int f, string g, int h, string i, int j,
+             string k, string l, string m, string n, string o, string p, float q, float r){
+        //Constructor
+        date = a;
+        owned = b;
+        parking_spaces = c;
+        active = d;
+        building_type = e;
+        congressional_district = f;
+
+    }
+    string get_address(); //M
 
 };

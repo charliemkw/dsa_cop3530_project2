@@ -9,7 +9,7 @@
 #include "location.h"
 using namespace std;
 
-vector<Location> parse_real_estate(string filename){
+vector<Location> parse_real_estate(string filename) {
     /*Takes in our finished real estate CSV with corrected
     zip codes, reads it entirely, and returns a vector where each element is a location (a row on our sheet)*/
 
@@ -24,14 +24,14 @@ vector<Location> parse_real_estate(string filename){
 
     vector<string> row; //Each element in this vector is a location's attributes, i.e. its date, owned/leased ..., latitude, longitude
     string line, word, temp;
-    while (file >> temp){
+    while (file >> temp) {
         row.clear();
 
         //Read current row information
         getline(file, line);
         stringstream s(line);
 
-        while(getline(s, word, ',')){
+        while (getline(s, word, ',')) {
             row.push_back(word);
         }
 
@@ -55,11 +55,12 @@ vector<Location> parse_real_estate(string filename){
         string ozip_ = row[14];
         string zip_ = row[15];
         float lat_ = stof(row[16]);
-        float long_ =  stof(row[17]);
+        float long_ = stof(row[17]);
 
-        Location current_location(date_, owned_, spaces_, active_, btype_, 
-        district_, lid_, lrid_, accessible_, ansi_, city_, county_, addr_, state_, ozip_, zip_,
-        lat_, long_);
+        Location current_location(date_, owned_, spaces_, active_, btype_,
+                                  district_, lid_, lrid_, accessible_, ansi_, city_, county_, addr_, state_, ozip_,
+                                  zip_,
+                                  lat_, long_);
 
 
         //Add that instance to the vector
@@ -69,6 +70,11 @@ vector<Location> parse_real_estate(string filename){
     }
 
     //fin; return fully populated vector below
-    return location_vector; 
+    return location_vector;
 
 }
+
+int main(){
+
+    return 0;
+};

@@ -2,7 +2,7 @@
 
 #include <vector>
 #include <iostream>
-#include "Location.h"
+#include "location.h"
 using namespace std;
 
 

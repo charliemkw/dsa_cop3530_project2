@@ -44,15 +44,15 @@ void MinHeap::heapifyDown(int index){
 
 }
 void MinHeap::insert(Location loc){
-    cout << "DEBUG: Inserting " << loc.distance;
+    //cout << "DEBUG: Inserting " << loc.distance;
     heap.push_back(loc);
     heapifyUp(heap.size()-1);
-    cout << "DEBUG: Insert dome";
+    //cout << "DEBUG: Insert dome";
 
 }
 Location MinHeap::extractMin(){
     if (heap.empty()) {
-        cout << "ERROR: Cannot extract from empty heap" << endl;
+        //cout << "ERROR: Cannot extract from empty heap" << endl;
         Location dummy("", "", 0, "", "", 0, "", 0, "", 0, "", "", "", "", "", "", 0.0, 0.0);
         dummy.distance = -1.0;
         return dummy;
@@ -84,4 +84,9 @@ vector<Location> MinHeap::getTopK(int k){
 
     }
     return results;
+}
+void MinHeap::printHeap() {
+    for (int i = 0; i < heap.size(); i++) {
+        cout << heap[i].get_address() << " - Distance: " << heap[i].distance << endl;
+    }
 }
