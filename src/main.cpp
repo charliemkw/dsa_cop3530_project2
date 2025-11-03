@@ -7,7 +7,6 @@
 #include <vector>
 #include <sstream>
 #include "location.h"
-#include "MinHeap.h"
 using namespace std;
 
 vector<Location> parse_real_estate(string filename){
@@ -58,7 +57,7 @@ vector<Location> parse_real_estate(string filename){
         float lat_ = stof(row[16]);
         float long_ =  stof(row[17]);
 
-        Location current_location(date_, owned_, spaces_, active_, btype_,
+        Location current_location(date_, owned_, spaces_, active_, btype_, 
         district_, lid_, lrid_, accessible_, ansi_, city_, county_, addr_, state_, ozip_, zip_,
         lat_, long_);
 
@@ -70,12 +69,6 @@ vector<Location> parse_real_estate(string filename){
     }
 
     //fin; return fully populated vector below
-    return location_vector;
+    return location_vector; 
 
-}
-
-int main(){
-
-
-    return 0;
 }
