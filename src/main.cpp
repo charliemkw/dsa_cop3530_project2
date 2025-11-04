@@ -35,8 +35,6 @@ vector<Location> parse_real_estate(string filename) {
             row.push_back(word);
         }
 
-        //-- Below is incomplete!! This is to help me remember what I need to do: --
-
         //Create new location instance based on current row
         string date_ = row[0];
         string owned_ = row[1];
@@ -64,7 +62,7 @@ vector<Location> parse_real_estate(string filename) {
 
 
         //Add that instance to the vector
-
+        location_vector.push_back(current_location);
 
 
     }

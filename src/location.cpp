@@ -79,3 +79,28 @@ float Location::get_latitude(){
 float Location::get_longitude(){
     return this->longitude;
 }
+
+Location& Location::operator=(const Location &other){
+    //Copy assignment operator
+    date = other.date;
+    owned = other.owned;
+    parking_spaces = other.parking_spaces;
+    active = other.active;
+    building_type = other.building_type;
+    congressional_district = other.congressional_district;
+    location_id = other.location_id;
+    location_region_id = other.location_region_id;
+    accessible = other.accessible;
+    ansi = other.ansi;
+    city = other.city;
+    county = other.county;
+    address = other.address;
+    state = other.state;
+    original_zip = other.original_zip;
+    zipcode = other.zipcode;
+    longitude = other.longitude;
+    latitude = other.latitude;
+    distance = other.distance;
+
+    return *this;
+}
