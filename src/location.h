@@ -82,6 +82,19 @@ public:
         active = d;
         building_type = e;
         congressional_district = f;
+        location_id = g;
+        location_region_id = h;
+        accessible = i;
+        ansi = j;
+        city = k;
+        county = l;
+        address = m;
+        state = n;
+        original_zip = o;
+        zipcode = p;
+        latitude = q;
+        longitude = r;
+        distance = 0.0;
 
     }
     string get_address(); //M
