@@ -30,6 +30,8 @@ class Location {
 
 
 
+    public: 
+
     //Getters
     string get_date(); //A
 
@@ -67,8 +69,6 @@ class Location {
     float get_longitude(); //R
 
 
-
-public:
     double distance; // need to be accessed in minHeap
     float latitude; //Q
     float longitude; //R
@@ -97,6 +97,9 @@ public:
         distance = 0.0;
 
     }
+    
     string get_address(); //M
+
+    Location& operator=(const Location &other); //Copy assignment operator; use for mergesort
 
 };
