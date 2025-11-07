@@ -8,4 +8,5 @@ include_directories(src)
 add_executable(dsa_cop3530_project2
         src/main.cpp
         src/MinHeap.cpp
-        src/MinHeap.h)
+        src/MinHeap.h
+        src/location.cpp)
