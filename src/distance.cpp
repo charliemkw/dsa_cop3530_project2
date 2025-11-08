@@ -54,7 +54,7 @@ void calculate_location_distance(Location& location, double user_lat, double use
 void calculate_all_distances(vector<Location>& locations, double user_lat, double user_long) {
   // Calculate distances between user location and all database locations:
   // Iterates through locations vector and calls calculate_location_distance for each location:
-  for (size_t i = 0; i < locations.size(); i++) {
+  for (int i = 0; i < locations.size(); i++) {
     calculate_location_distance(locations[i], user_lat, user_long);
   }
 }

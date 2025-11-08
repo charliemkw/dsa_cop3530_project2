@@ -34,11 +34,11 @@ vector<Location> parse_real_estate(string filename) {
 
     vector<string> row; //Each element in this vector is a location's attributes, i.e. its date, owned/leased ..., latitude, longitude
     string line, word, temp;
+    getline(file, line);
     while (file >> temp) {
         row.clear();
 
         //Read current row information
-        getline(file, line);
         stringstream s(line);
 
         while (getline(s, word, ',')) {
@@ -104,11 +104,11 @@ map<string, pair<float, float>> parse_us_zips(string filename){
     //Reading information row by row:
     vector<string> row; //Represents a unique US zip code and its corresponding lat/long
     string line, word, temp;
+    getline(file, line);
     while (file >> temp) {
         row.clear();
 
         //Read current row information
-        getline(file, line);
         stringstream s(line);
 
         while (getline(s, word, ',')) {

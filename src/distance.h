@@ -38,6 +38,6 @@ void calculate_location_distance(Location& location, double user_lat, double use
  * - user_lat = user's latitude
  * - user_long = user's longitude
  */
-void calculate_all_distances(vector<Location>& locations, double userLat, double userLon);
+void calculate_all_distances(vector<Location>& locations, double user_lat, double user_long);
 
 #endif //DISTANCE_H
