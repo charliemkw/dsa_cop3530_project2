@@ -7,7 +7,7 @@
 #include "distance.h"
 using namespace std;
 
-void merge_helper(vector<Location> locations, int left, int mid, int right);
+void merge_helper(vector<Location>& locations, int left, int mid, int right);
 
 vector<Location> merge_sort(vector<Location> all_locations, string in_zip, int start, int end);
     // Description:

@@ -8,7 +8,7 @@
 #include "mergesort.h"
 using namespace std;
 
-void merge_helper(vector<Location> locations, int left, int mid, int right){
+void merge_helper(vector<Location>& locations, int left, int mid, int right){
     // MUST CITE: slides 51-53 for Module 6 helped me with logic here
     int n1 = mid - left + 1;
     int n2 = right - mid;
@@ -66,7 +66,8 @@ vector<Location> merge_sort(vector<Location> all_locations, string in_zip, int s
 
 
     //MUST CITE: Slides 51 to 53 of Module 6 helped with logic here
-    vector<Location> sorted_locations;
+
+    //vector<Location> sorted_locations;
 
     if (start < end){
         int middle = (start + end) / 2;
@@ -76,7 +77,7 @@ vector<Location> merge_sort(vector<Location> all_locations, string in_zip, int s
 
     }
 
-    return sorted_locations;
+    return all_locations;
 
 }
 
