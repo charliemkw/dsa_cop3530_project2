@@ -1,7 +1,6 @@
 #include <iostream>
 #include "location.h"
 
-
 string Location::get_date(){
     return this->date;
 }

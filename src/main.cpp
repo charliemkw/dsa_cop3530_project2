@@ -7,6 +7,7 @@
 #include <vector>
 #include <sstream>
 #include "location.h"
+#include "distance.h"
 using namespace std;
 
 vector<Location> parse_real_estate(string filename) {
@@ -73,6 +74,15 @@ vector<Location> parse_real_estate(string filename) {
 }
 
 int main(){
+    // Parse locations:
+    vector<Location> locations = parse_real_estate();
+
+    // Get user's coordinates (user input from terminal):
+    double user_lat = 0; // (change)
+    double user_long = 0; // (change)
+
+    // Calculate all distances:
+    calculate_all_distances(locations, user_lat, user_long);
 
     return 0;
 };
