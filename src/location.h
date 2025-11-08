@@ -1,6 +1,11 @@
 //
 // Created by vigwe on 10/23/2025.
+// location.h
 //
+
+#ifndef LOCATION_H
+#define LOCATION_H
+
 #include <iostream>
 using namespace std;
 
@@ -103,3 +108,5 @@ class Location {
     Location& operator=(const Location &other); //Copy assignment operator; use for mergesort
 
 };
+
+#endif // LOCATION_H
