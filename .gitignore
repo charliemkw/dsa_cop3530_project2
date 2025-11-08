@@ -1,0 +1,21 @@
+# Build directories
+cmake-build-debug/
+cmake-build-*/
+build/
+
+# Compiled executables
+*.exe
+*.out
+test_heap
+dsa_cop3530_project2
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+
+# Mac files
+.DS_Store
+
+# Test files
+test_minheap.cpp
