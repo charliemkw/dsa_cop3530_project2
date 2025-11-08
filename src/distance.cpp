@@ -8,7 +8,8 @@
 
 double to_radians(double degrees) {
   // radians = degrees * pi / 180
-  double radians = degrees * M_PI / 180.0;
+  // I used an approximation for pi instead of M_PI because it made my compiler freak out sorry
+  double radians = degrees * 3.14159265 / 180.0;
   return radians;
 }
 

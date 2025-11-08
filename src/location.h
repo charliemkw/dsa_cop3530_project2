@@ -27,13 +27,8 @@ class Location {
         string county; //L
         string address; //M
         string state; //N
-        string original_zip; //O; DO NOT NEED THIS 
+        string original_zip; //O
         string zipcode; //P; zip code with proper length; use this
-
-
-
-
-
 
     public: 
 
@@ -62,10 +57,9 @@ class Location {
 
     string get_county(); //L
 
-
     string get_state(); //N
 
-    string get_original_zip(); //O; May delete this as well since it likely won't be needed
+    string get_original_zip(); //O
 
     string get_zip(); //P; This is our corrected zip code
 
@@ -73,37 +67,21 @@ class Location {
 
     float get_longitude(); //R
 
+    void describe(); 
 
     double distance; // need to be accessed in minHeap
     float latitude; //Q
     float longitude; //R
 
-    Location(string a, string b, int c, string d, string e, int f, string g, int h, string i, int j,
-             string k, string l, string m, string n, string o, string p, float q, float r){
-        //Constructor
-        date = a;
-        owned = b;
-        parking_spaces = c;
-        active = d;
-        building_type = e;
-        congressional_district = f;
-        location_id = g;
-        location_region_id = h;
-        accessible = i;
-        ansi = j;
-        city = k;
-        county = l;
-        address = m;
-        state = n;
-        original_zip = o;
-        zipcode = p;
-        latitude = q;
-        longitude = r;
-        distance = 0.0;
-
-    }
-    
     string get_address(); //M
+
+    //Parameterizd Constructor
+    Location(string a, string b, int c, string d, string e, int f, string g, int h, string i, int j,
+             string k, string l, string m, string n, string o, string p, float q, float r);
+
+    //Default constructor
+    Location();
+    
 
     Location& operator=(const Location &other); //Copy assignment operator; use for mergesort
 

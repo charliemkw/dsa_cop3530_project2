@@ -4,6 +4,8 @@
 #include <vector>
 #include <sstream>
 #include "location.h"
+#include "distance.h"
+#include "mergesort.h"
 using namespace std;
 
 void merge_helper(vector<Location> locations, int left, int mid, int right){
@@ -62,10 +64,6 @@ vector<Location> merge_sort(vector<Location> all_locations, string in_zip, int s
     // - Parameters start and end refer to the first and last indices of the vector all_locations
     //     -> In the first call this should always be 0 and .size() - 1 respectively
 
-    // Misc. notes from Veronica (this will be removed before submission):
-    //   - CALL DISTANCE CALCULATION FUNCTION HERE so that each Location instance has distances relative to the in_zip!
-    //   - then we can compare and sort based on those distances!!!!!
-
 
     //MUST CITE: Slides 51 to 53 of Module 6 helped with logic here
     vector<Location> sorted_locations;
@@ -80,4 +78,14 @@ vector<Location> merge_sort(vector<Location> all_locations, string in_zip, int s
 
     return sorted_locations;
 
+}
+
+vector<Location> get_closest(vector<Location> locs, int n){
+    vector<Location> closest_locations;
+
+    for (int i = 0; i < n; i++){
+        closest_locations.push_back(locs[i]);
+    }
+
+    return closest_locations;
 }
