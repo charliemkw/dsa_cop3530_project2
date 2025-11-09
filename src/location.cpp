@@ -111,7 +111,7 @@ void Location::describe(){
     cout << ". There are " << this->get_parking_spaces() << " parking spaces." << endl;
     cout << "ACCESSIBILITY STATUS: " << this->get_accessibility();
     if (this->get_accessibility() == "Will Conform"){
-        cout << "Reach out to current owner/tenant for more information." << endl;
+        cout << " - Reach out to current owner/tenant for more information." << endl << endl;
     }
 
 }

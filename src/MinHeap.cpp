@@ -25,10 +25,10 @@ void MinHeap::heapifyDown(int index){
         int leftIndex = leftChild(index);
         int rightIndex = rightChild(index);
 
-        if (leftIndex < size && heap[leftIndex]. distance < heap[smallestIndex].distance){
+        if (leftIndex < size && heap[leftIndex].distance < heap[smallestIndex].distance){
             smallestIndex = leftIndex;
         }
-        if (rightIndex < size && heap[rightIndex]. distance < heap[smallestIndex].distance){
+        if (rightIndex < size && heap[rightIndex].distance < heap[smallestIndex].distance){
             smallestIndex = rightIndex;
         }
         if (smallestIndex != index){
@@ -70,14 +70,14 @@ Location MinHeap::extractMin(){
 
 void MinHeap::buildHeap( vector<Location>& items){
     heap = items;
-    for (int i = heap.size()/ 2 -1 ; i>= 0; i--){
+    for (int i = heap.size()/ 2 - 1 ; i>= 0; i--){
         heapifyDown(i);
     }
 }
 vector<Location> MinHeap::getTopK(int k){
     vector<Location> results;
     MinHeap tempHeap;
-    tempHeap.heap = this-> heap;
+    tempHeap.heap = this->heap;
 
     for (int i = 0; i < k &&! tempHeap.isEmpty(); i++){
         results.push_back(tempHeap.extractMin());
