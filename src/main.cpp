@@ -33,9 +33,9 @@ vector<Location> parse_real_estate(string filename) {
     //Reading information row by row:
 
     vector<string> row; //Each element in this vector is a location's attributes, i.e. its date, owned/leased ..., latitude, longitude
-    string line, word, temp;
+    string line, word;
     getline(file, line);
-    while (file >> temp) {
+    while (getline(file, line)) {
         row.clear();
 
         //Read current row information
@@ -43,6 +43,10 @@ vector<Location> parse_real_estate(string filename) {
 
         while (getline(s, word, ',')) {
             row.push_back(word);
+        }
+
+        if (row.size() < 18) {
+            continue; // Skip to the next location if data is incomplete
         }
 
         //Create new location instance based on current row
@@ -53,25 +57,60 @@ vector<Location> parse_real_estate(string filename) {
         int spaces_ = 0;
         try{
             spaces_ = stoi(row[2]);
-        } catch(const invalid_argument) {
+        } catch(const invalid_argument&) {
             cerr << "Invalid value to convert to integer: " << row[2] << endl;
+        } catch(const out_of_range&) {
+            cerr << "Value out of range: " << row[2] << endl;
         }
 
         string active_ = row[3];
         string btype_ = row[4];
-        int district_ = stoi(row[5]);
+
+        int district_ = 0;
+        try {
+            district_ = stoi(row[5]);
+        } catch(const invalid_argument&) {
+        } catch(const out_of_range&) {
+        }
+
         string lid_ = row[6];
-        int lrid_ = stoi(row[7]);
+
+        int lrid_ = 0;
+        try {
+            lrid_ = stoi(row[7]);
+        } catch(const invalid_argument&) {
+        } catch(const out_of_range&) {
+        }
+
         string accessible_ = row[8];
-        int ansi_ = stoi(row[9]);
+
+        int ansi_ = 0;
+        try {
+            ansi_ = stoi(row[9]);
+        } catch(const invalid_argument&) {
+        } catch(const out_of_range&) {
+        }
+
         string city_ = row[10];
         string county_ = row[11];
         string addr_ = row[12];
         string state_ = row[13];
         string ozip_ = row[14];
         string zip_ = row[15];
-        float lat_ = stof(row[16]);
-        float long_ = stof(row[17]);
+
+        float lat_ = 0;
+        try {
+            lat_ = stoi(row[16]);
+        } catch(const invalid_argument&) {
+        } catch(const out_of_range&) {
+        }
+
+        float long_ = 0;
+        try {
+            long_ = stoi(row[17]);
+        } catch(const invalid_argument&) {
+        } catch(const out_of_range&) {
+        }
 
         Location current_location(date_, owned_, spaces_, active_, btype_,
                                   district_, lid_, lrid_, accessible_, ansi_, city_, county_, addr_, state_, ozip_,
@@ -90,6 +129,7 @@ vector<Location> parse_real_estate(string filename) {
 
 }
 
+
 map<string, pair<float, float>> parse_us_zips(string filename){
     map<string, pair<float, float>> all_us_zips;
     
@@ -103,9 +143,9 @@ map<string, pair<float, float>> parse_us_zips(string filename){
 
     //Reading information row by row:
     vector<string> row; //Represents a unique US zip code and its corresponding lat/long
-    string line, word, temp;
+    string line, word;
     getline(file, line);
-    while (file >> temp) {
+    while (getline(file, line)) {
         row.clear();
 
         //Read current row information
@@ -140,6 +180,7 @@ int main(){
     string in_zip;
     cout << "Enter your ZIP code: ";
     cin >> in_zip;
+    cout << endl;
 
     //Determine corresponding coordinates
     pair<float, float> user_coords = us_zips[in_zip];
@@ -170,7 +211,7 @@ int main(){
     for (int i = 0; i < n; i++){
         Location location = closest_locations[i];
         cout << location.get_address() << ", " << location.get_city()  << ", " << location.get_state() << endl;
-        cout << "This building is " << location.distance << "miles away. " << endl;
+        cout << "This building is " << location.distance << " miles away. " << endl;
         location.describe();
         
     }
