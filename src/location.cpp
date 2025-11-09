@@ -90,15 +90,15 @@ void Location::describe(){
     string leased; 
 
     if (!is_active()){
-        cout << "This location is unavailable for purchase." << endl;
+        cout << "This location is unavailable for purchase." << endl << endl;
         return;
     } 
 
     if (this->get_date() != "0"){
         string year = this->get_date().substr(0, 4);
-        cout << "This location was built in " << year;
+        cout << "This location was built in " << year << "." << endl;
     } else {
-        cout << "It is not known what year this location was built";
+        cout << "It is not known what year this location was built." << endl;
     }
 
     if (this->is_owned()){
@@ -107,8 +107,8 @@ void Location::describe(){
         leased = "lease";
     }
 
-    cout << ". This location is available for " << leased;
-    cout << ". There are " << this->get_parking_spaces() << " parking spaces." << endl;
+    cout << "This location is available for " << leased << "." << endl;
+    cout << "There are " << this->get_parking_spaces() << " parking spaces." << endl;
     cout << "ACCESSIBILITY STATUS: " << this->get_accessibility() << endl << endl;
     if (this->get_accessibility() == "Will Conform"){
         cout << " - Reach out to current owner/tenant for more information." << endl << endl;
