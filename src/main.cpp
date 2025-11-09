@@ -167,13 +167,22 @@ map<string, pair<float, float>> parse_us_zips(string filename){
 }
 
 
+vector<Location> get_closest(vector<Location> locs, int n){
+    vector<Location> closest_locations;
+
+    for (int i = 0; i < n; i++){
+        closest_locations.push_back(locs[i]);
+    }
+
+    return closest_locations;
+}
 
 
 // MAIN FUNCTION
 int main(){
     // Parse locations:
     vector<Location> locations = parse_real_estate("real_estate.csv");
-    map<string, pair<float, float>> us_zips = parse_us_zips("uszipsmod.csv");
+    map<string, pair<float, float>> us_zips = parse_us_zips("uszips.csv");
     
 
     //Take in zip code
@@ -183,7 +192,12 @@ int main(){
     cout << endl;
 
     //Determine corresponding coordinates
+
     pair<float, float> user_coords = us_zips[in_zip];
+    if (us_zips.count(in_zip) == 0){
+        cout << "Couldn't find your zip code." << endl;
+        return 0;
+    }
     float user_lat = user_coords.first;
     float user_long = user_coords.second;
 
@@ -197,19 +211,21 @@ int main(){
     //Using an arbitrary quality since there's no bias between even/odd in US zip codes
     if (stoi(in_zip) % 2 == 1){
         //If it's ODD let's use merge sort
-        vector<Location> sortedlocations = merge_sort(locations, in_zip, 0, locations.size()-1);
-        closest_locations = get_closest(sortedlocations, n);
+        merge_sort(locations, 0, locations.size());
+        closest_locations = get_closest(locations, n);
 
     } else {
         //If it's EVEN let's use heap sort
         MinHeap min_heap;
         min_heap.buildHeap(locations); //build heap based on locations vector
         closest_locations = min_heap.getTopK(n); //retrieve 10 closest locations
+
     }
 
     //Print n locations
     for (int i = 0; i < n; i++){
         Location location = closest_locations[i];
+        cout << "~~~ LOCATION #" << i+1 << " ~~~" << endl;
         cout << location.get_address() << ", " << location.get_city()  << ", " << location.get_state() << endl;
         cout << "This building is " << location.distance << " miles away. " << endl;
         location.describe();

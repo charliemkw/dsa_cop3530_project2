@@ -57,7 +57,7 @@ void merge_helper(vector<Location>& locations, int left, int mid, int right){
 
 }
 
-vector<Location> merge_sort(vector<Location> all_locations, string in_zip, int start, int end){
+void merge_sort(vector<Location>& all_locations, int start, int end){
     // Description:
     // - Takes in vector of locations from CSV
     // - And returns a version of that vector, sorted by ASCENDING DISTANCE to the given zip code
@@ -67,26 +67,12 @@ vector<Location> merge_sort(vector<Location> all_locations, string in_zip, int s
 
     //MUST CITE: Slides 51 to 53 of Module 6 helped with logic here
 
-    //vector<Location> sorted_locations;
-
     if (start < end){
         int middle = (start + end) / 2;
-        merge_sort(all_locations, in_zip, start, middle);
-        merge_sort(all_locations, in_zip, middle + 1, end);
+        merge_sort(all_locations, start, middle);
+        merge_sort(all_locations, middle + 1, end);
         merge_helper(all_locations, start, middle, end);
 
     }
 
-    return all_locations;
-
-}
-
-vector<Location> get_closest(vector<Location> locs, int n){
-    vector<Location> closest_locations;
-
-    for (int i = 0; i < n; i++){
-        closest_locations.push_back(locs[i]);
-    }
-
-    return closest_locations;
 }
