@@ -27,26 +27,46 @@ function App() {
   const [mapCenter, setMapCenter] = useState([39.8283, -98.5795]); // middle of US
   const [mapZoom, setMapZoom] = useState(4);
   const [markers, setMarkers] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+//display top 10 resumts
+    const handleSearch = async () => {
+      if (!zip || !/^\d{5}$/.test(zip)) {
+        alert('Please enter a valid 5-digit ZIP code!');
+        return;
+      }
+      setLoading(true);
+      setError('');
 
-  const handleSearch = () => {
-    if (!address || !city || !state || !zip) {
-      alert('Please fill in all fields!');
-      return;
-    }
+      try {
+        const response = await fetch('http://localhost:3001/api/find-locations', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ zipcode: zip })
+        });
+        const data = await response.json();
+        const newMarkers = data.locations.map((loc, index) => ({
+          id: index,
+          position: [loc.latitude || mapCenter[0], loc.longitude || mapCenter[1]],
+          name: loc.address,
+          distance: `${loc.distance.toFixed(2)} miles`,
+          city: loc.city,
+          state: loc.state,
+          parking: loc.parking_spaces,
+          accessibility: loc.accessibility,
+          owned: loc.owned
 
-     // NEED TO ADD WHEN CHARLIE Is DONE WITH GEOCODING
-
-    //Load CSV data
-
-    //Charlie distance calculations
-
-    //minHeap and quick sort (calling it to with user input
-
-    //display top 10 resumts
-
+        }));
+          setMarkers(newMarkers);
+        } catch (err) {
+          setError('Unable to connect to server');
+        } finally {
+          setLoading(false);
+        }
+      };
 
 
-  };
+
 
 
   return (
